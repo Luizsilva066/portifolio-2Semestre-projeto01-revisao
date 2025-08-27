@@ -1,0 +1,102 @@
+/* 1. CRIAÇÃO DE VARIÁVEIS DE CORES */
+:root{
+    --cor-fundo: #f0f2f5;
+    --cor-branco: #ffffff;
+    --cor-texto-primario: #1c1e21;
+    --cor-texto-secundario: #606770;
+    --cor-borda: #dcdfe3;
+    --cor-acento: #007bff;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--cor-fundo);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;    
+}
+/*3. Estilo do componente principal: .card*/
+.card {
+    background-color: var(--cor-branco);
+    width: 320px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba( 0,0,0,0.5);
+    
+    /*A magica começa aqui começa aqui*/
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /*Esconder qualquer conteudo filho que possivelmente saia dos limites*/
+    overflow: hidden;
+    text-align: center;
+
+}
+/*4.Efeito hover no card*/
+.card:hover {
+    transform: translateY( -10px);
+    box-shadow: 0 12px 32px rgba( 0,0,0,0.15); /*Mover o card em 10 px para cima*/
+
+}
+/*5.Estilos da imagem do card*/
+.card_image-container{
+    width: 100%;
+    height: 200px; /*altura fixa para o container da imagem*/
+}
+.card_image{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;/*garante que a imagem cubra todo o container*/
+}
+/*6. Estilo da informação(nome, titulo e social)*/
+.card_info{
+    padding: 24px;
+}
+.card_name{
+    font-size: 1.5rem;
+    color: var(--cor-texto-primario);
+    margin-bottom: 8px;
+}
+.card_title{
+    font-size: 1rem;
+    color: var(--cor-texto-secundario);
+    margin-bottom: 24px;
+}
+/*7.Estilo dos icones sociais(ultilizando flexbox)*/
+.card_social{
+    display: flex; /*Ativa o flexbox*/
+    justify-content: center;/*Centraliza os itens no eixo principal(horizontal)*/
+    gap: 16px; /*Espaçamento entre os icones*/
+
+}
+.card_social a{
+    display: flex; /*Ativa o flexbox*/
+    align-items: center; /*Centraliza os itens no eixo cruzado (vertical)*/
+    justify-content: center;
+    width: 40px; /*Largura fixa para os icones*/
+    height: 40px;
+    color: var(--cor-acento);
+    border: 2px solid var(--cor-borda);
+    border-radius: 50%;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+}
+.card_social a:hover {
+    background-color: var(--cor-acento);
+    color: var(--cor-branco);
+    border-color: var(--cor-acento);
+
+}
+/*8. Design responsivo (Nossa primeira Media Query!)*/
+@media (max-width:400px) {
+    .card{
+        width: 90% /* O card ocupará 90% da largura da tela;*/
+    }
+}
